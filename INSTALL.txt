@@ -1,0 +1,14 @@
+
+INSTALLATION:
+To install Online programming judge you just need xampp server and python 2.7 . By default python 2.7 comes with ubuntu distro.
+If you dont have these softwares install it first.
+
+After Installing xampp and python (version 2.7) You need to configure it. 
+
+Edit 
+1)server configuration file (httpd.conf located in "/opt/lampp/etc/httpd.conf")
+  make sure that your running a httpd by specific username .by default it's value is "no body". you change it to any user.
+  make a alias for /cgi-bin/ as /compile/
+  thats it.
+2)Create a "Contest" directory in user's home folder.
+3)Import database files in your local phpmyadmin.
