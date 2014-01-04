@@ -41,10 +41,10 @@ if ((isset($_GET['cry']) && $_GET['cry']==$_SESSION['sec'] && isset($_SESSION['a
 					<td><input type="time" name="start_time" placeholder="HH:MM"/> <select name="sap"><option>AM</option><option>PM</option></select></td>
 				</tr>
 				<tr><td>End date:</td>
-					<td><input type="date" name="end_date" placeholder="HH:MM"/> <select name="eap"><option>AM</option><option>PM</option></select></td>
+					<td><input type="date" name="end_date" placeholder="DD-MM-YYYY"/> </td>
 				</tr>
 				<tr><td>End Time:</td>
-					<td><input type="time" name="end_time" placeholder="hh-mm"/> </td>
+					<td><input type="time" name="end_time" placeholder="HH:MM"/><select name="eap"><option>AM</option><option>PM</option></select> </td>
 				</tr>
 				<tr><td></td>
 					<td><input type="button" value="Create" onclick="createContest('shw_msg')"/> </td>

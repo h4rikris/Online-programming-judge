@@ -6,6 +6,11 @@ function createContest(divID) {
 	var st=document.forms["contestf"]["start_time"].value;
 	var ed=document.forms["contestf"]["end_date"].value;
 	var et=document.forms["contestf"]["end_time"].value;
+	var sap=document.forms["contestf"]["sap"].value;
+	var eap=document.forms["contestf"]["eap"].value;
+	st=st+" "+sap;
+	et=et+" "+eap;
+	alert(st);
 	if (window.XMLHttpRequest) 
 		{ xmlhttp = new XMLHttpRequest(); 
 		} 

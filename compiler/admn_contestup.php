@@ -1,6 +1,11 @@
 <?php
-function date_validation($start_date){
-	
+function date_validation($sd,$st,$ed,$et){
+	$str=strtotime($sd." ".$st);
+	$etr=strtotime($ed." ".$et);
+	if((time()<=$str) && (time()<=$etr && $str<$etr)){
+		return True;}
+	else{
+		return False;}
 	}
 session_start();
 include("mycrypt.php");
@@ -17,13 +22,17 @@ if (isset($_SESSION['sec']) && isset($_GET['cry']) && $_GET['cry']==$_SESSION['s
 	$st=check_input($_GET['start_time']);
 	$ed=check_input($_GET['end_date']);
 	$et=check_input($_GET['end_time']);
+	if (date_validation($sd,$st,$ed,$et)){
 	$author=$_SESSION['uid'];
 		mysql_query("INSERT INTO contests (name,start_date,start_time,end_date,end_time,author) VALUES ('$c','$sd','$st','$ed','$et','$author')") or die("Something went wrong.!!!! :-(");
 		$crypt=(string)time().myencrypt(myrand()).$_SESSION['uid'];
 		auth($crypt,$_COOKIE['PHPSESSID']);
-		header("Location:/compile/createContest.py?contest=$c&cry=$crypt");
+		header("Location:/compile/createContest.py?contest=$c&cry=$crypt");}
+	else{
+		echo "Invalid date and time";
+		}
 	}
 else{
-		header("Location:index.php?err=3");
+		//header("Location:index.php?err=3");
 	}
 ?>
