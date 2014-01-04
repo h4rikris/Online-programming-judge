@@ -1,0 +1,9 @@
+						----:commands:-----
+strace:used to trace the programs.we can system calls.
+	Ex: strace ls
+
+Creating Bootable disc:
+	$cdrecord -scanbus
+	$cdrecord -v -dao dev=1,0,0 speed=8 file.iso
+	
+
