@@ -1,4 +1,5 @@
 #!/usr/bin/python
+#Author	:	HARI KRISHNA K
 def check(input_data,time_taken,l_time):
 	o=open("outputs","r")
 	if input_data[:-1]==o.read():
