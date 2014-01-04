@@ -12,3 +12,6 @@ Edit
   thats it.
 2)Create a "Contest" directory in user's home folder.
 3)Import database files in your local phpmyadmin.
+
+
+4)Thinking of creating shell script that do all above tasks
