@@ -7,6 +7,7 @@ include("mycrypt.php");
 $gotallinputs=0;
 if(isset($_GET['contest']) &&isset($_GET['start_date']) && isset($_GET['start_time']) && isset($_GET['end_date']) && isset($_GET['end_time'])){
 	$gotallinputs=1;
+	//some comment
 	}
 if (isset($_SESSION['sec']) && isset($_GET['cry']) && $_GET['cry']==$_SESSION['sec'] && $gotallinputs==1){
 	include("db.php");
