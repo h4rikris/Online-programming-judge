@@ -29,6 +29,9 @@ if (isset($_SESSION['access']) && $_SESSION['access']==1 && isset($_SESSION['tru
 		<td>Problem Title</td><td><input type="text" name="title" placeholder="title"/></td>
 	</tr>
 	<tr>
+		<td>Problem Code</td><td><input type="text" name="pcode" placeholder="problemcode"/></td>
+	</tr>
+	<tr>
 		<td>Problem</td><td><textarea required="required" cols=100 rows=20 name='pblm'></textarea></td>
 	</tr>
 	<tr>

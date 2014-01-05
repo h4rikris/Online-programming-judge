@@ -31,11 +31,12 @@ function createproblems(){
 	var crypt=escape(document.forms["problems"]["security"].value)
 	var contest=escape(document.forms["problems"]["contest"].value);
 	var title=escape(document.forms["problems"]["title"].value);
+	var pcode=escape(document.forms["problems"]["pcode"].value);
 	var pbl=escape(document.forms["problems"]["pblm"].value);
 	var time=escape(document.forms["problems"]["time"].value);
 	var inputs=escape(document.forms["problems"]["inputs"].value);
 	var outputs=escape(document.forms["problems"]["outputs"].value);
-	var finale="cry="+crypt+"&contest="+contest+"&title="+title+"&pblm="+pbl+"&time="+time+"&"+"inputs="+inputs+"&outputs="+outputs;
+	var finale="cry="+crypt+"&contest="+contest+"&pcode="+pcode+"&title="+title+"&pblm="+pbl+"&time="+time+"&"+"inputs="+inputs+"&outputs="+outputs;
 	if (window.XMLHttpRequest) 
 		{ xmlhttp = new XMLHttpRequest(); 
 		} 

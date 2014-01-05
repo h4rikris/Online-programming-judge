@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import time,os,subprocess,cgi,cgitb,Cookie
-pathtoauth="/home/krishna/online/Online-programming-judge/compiler/auth"
+pathtoauth="/home/krishna/online/Online-programming-judge/compiler/auth/"
 contestpath="/home/krishna/Contest/"
 #displaypath="/opt/lampp/htdocs/compiler/Contests/"
 l=os.listdir(pathtoauth)
