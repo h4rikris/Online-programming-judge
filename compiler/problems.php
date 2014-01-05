@@ -15,13 +15,13 @@ if(isset($_GET['problem']) && isset($_GET['contest'])){
 		if($cc==1 || $cc==2){
 			$_SESSION['problem']=$problem;
 			$_SESSION['contest']=$contest;
-			$q=mysql_query("SELECT * FROM problems WHERE contest='$contest' && problem_title='$problem'");
+			$q=mysql_query("SELECT * FROM problems WHERE contest='$contest' && pcode='$problem'");
 		?>
 		<div style="width:100px">
 		<pre>
 		<?php
 		$r=mysql_fetch_array($q);
-		echo $r[2];
+		echo $r[3];
 		?></pre>
 		</div>
 		<a href="upload.php">Submit solution</a>

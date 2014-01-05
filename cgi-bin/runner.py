@@ -21,11 +21,6 @@ print '</head>'
 print '<body>'
 pathtoauth="/home/krishna/online/Online-programming-judge/compiler/auth/"
 contestpath="/home/krishna/Contest/"
-print "asd12"
-session_file=open(pathtoauth+"138892208569a578d78f648eb45cc55R092848","r")
-print "asd"
-sid=session_file.readlines()
-print sid
 form=cgi.FieldStorage()
 got_all_inputs=0
 access_grant=0
@@ -44,6 +39,7 @@ if form.getvalue('cry') and form.getvalue('contest') and form.getvalue('problem'
 	l2=os.listdir(contestpath+contest)
 	languages=["python","C","Java"]
 	got_all_inputs=1
+	
 else:
 	error=1
 if (got_all_inputs==1) and (cry in l) and (contest in l1) and (problem in l2) and (language in languages):
@@ -54,7 +50,7 @@ if (got_all_inputs==1) and (cry in l) and (contest in l1) and (problem in l2) an
 	#End of code for retriving cookie
 	session_file=open(pathtoauth+cry,"r")
 	sid=session_file.readlines()
-	if (sid[0][0:26]==cookie["PHPSESSID"].value[0:26]) and (sid[1]==contest) and (sid[2]==problem) and (sid[3]==filename):
+	if (sid[0][0:26]==cookie["PHPSESSID"].value[0:26]) and (sid[1][:-1]==contest) and (sid[2][:-1]==problem) and (sid[3][:-1]==filename):
 		access_grant=1
 		os.remove(pathtoauth+cry)
 	else:
@@ -131,6 +127,6 @@ else:
 if error==1:
 	print "Inputs are missing...!!"
 elif error==2:
-	print "Specified contest or problem is invalid..."
+	print "Unauthorized access or invalid access.\nPossible problem is Specified contest or problem is invalid..."
 elif error==3:
 	print "You are not authorize to run this program.Please kindly login first."

@@ -31,10 +31,10 @@ function auth($cry,$sid){
 	}
 function auth_submit($cry,$sid,$c,$p,$fn){
 	$f=fopen("auth/".$cry,"w");
-	fwrite($f,$sid);
-	fwrite($f,$c);
-	fwrite($f,$p);
-	fwrite($f,$fn);
+	fwrite($f,$sid."\n");
+	fwrite($f,$c."\n");
+	fwrite($f,$p."\n");
+	fwrite($f,$fn."\n");
 	fclose($f);
 	}
 function check_input($r){

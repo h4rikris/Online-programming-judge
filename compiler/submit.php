@@ -10,7 +10,7 @@ if( $_FILES['file']['name'] != "" && isset($_POST['cry']) && $_POST['cry']==$_SE
 	$problem=$_SESSION['problem'];
 	$filename=$_SESSION['uid'].myrand();
 	$language=check_input($_POST['language']);
-	$q=mysql_query("SELECT time_limit FROM problems WHERE contest='$contest' && problem_title='$problem'") or die("error got");
+	$q=mysql_query("SELECT time_limit FROM problems WHERE contest='$contest' && pcode='$problem'") or die("error got");
 	$r=mysql_fetch_array($q);
 	$time_limit=$r[0];
 	if ($language=="python"){$filename=$filename.".py";}
