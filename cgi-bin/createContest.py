@@ -25,10 +25,6 @@ if form.getvalue('cry') and form.getvalue('contest'):
 					os.mkdir(contestpath+contest)
 					os.remove(pathtoauth+cry)
 					stat=2
-					cook["contest_created"]="1"
-					cook["contest_created"]["path"]="/"
-					cook["contest_created"]["expires"]=60*60
-					print cook
 				else:
 					stat=1
 			except OSError:
