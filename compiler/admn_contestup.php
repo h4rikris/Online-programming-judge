@@ -29,7 +29,7 @@ if (isset($_SESSION['sec']) && isset($_GET['cry']) && $_GET['cry']==$_SESSION['s
 		auth($crypt,$_COOKIE['PHPSESSID']);
 		header("Location:/compile/createContest.py?contest=$c&cry=$crypt");}
 	else{
-		echo "Invalid date and time";
+		echo "Invalid date and time. Please check start date and time,end date and time.\nNote:The starting date of the competition must be greater than current time.";
 		}
 	}
 else{
