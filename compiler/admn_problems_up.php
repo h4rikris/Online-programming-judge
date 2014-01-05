@@ -23,7 +23,7 @@ if (isset($_SESSION['sec']) && $gotallinputs==1 && $_POST['cry']==$_SESSION['sec
 		mysql_query("UPDATE contests SET num=$temp WHERE name='$contest'")or die(mysql_error());
 		$crypt=(string)time().myencrypt(myrand()).$_SESSION['uid'];
 		auth($crypt,$_COOKIE['PHPSESSID']);
-		header("Location:/compile/createProblems.py?contest=$contest&title=$title&cry=$crypt&inputs=".urlencode($_POST['inputs'])."&outputs=".urlencode($_POST['outputs']));
+		header("Location:/compile/createProblems.py?contest=$contest&title=$pcode&cry=$crypt&inputs=".urlencode($_POST['inputs'])."&outputs=".urlencode($_POST['outputs']));
 	}
 else{
 		header("Location:index.php?err=3");

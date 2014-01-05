@@ -48,8 +48,8 @@ if (got_all_inputs==1) and (cry in l) and (contest in l1) and (problem in l2) an
 	cookie.load(cookie_string)
 	#End of code for retriving cookie
 	session_file=open(pathtoauth+cry,"r")
-	sid=session_file.read()
-	if sid[0:26]==cookie["PHPSESSID"].value[0:26]:
+	sid=session_file.readlines()
+	if (sid[0][0:26]==cookie["PHPSESSID"].value[0:26]) and (sid[1]==contest) and (sid[2]==problem) and (sid[3]==filename):
 		access_grant=1
 		os.remove(pathtoauth+cry)
 	else:

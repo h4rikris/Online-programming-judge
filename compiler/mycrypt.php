@@ -29,6 +29,14 @@ function auth($cry,$sid){
 	fwrite($f,$sid."\n");
 	fclose($f);
 	}
+function auth_submit($cry,$sid,$c,$p,$fn){
+	$f=fopen("auth/".$cry,"w");
+	fwrite($f,$sid."\n");
+	fwrite($f,$c."\n");
+	fwrite($f,$p."\n");
+	fwrite($f,$fn."\n");
+	fclose($f);
+	}
 function check_input($r){
 	$r=trim($r);
 	$r=strip_tags($r);
@@ -37,5 +45,26 @@ function check_input($r){
 	$r=htmlentities($r);
 	$r=mysql_real_escape_string($r);
 	return $r;
+	}
+function check_contest($contest,$type){
+	$q=mysql_query("SELECT * FROM contests WHERE name='$contest'");
+	$r=mysql_fetch_array($q);
+	$start_date_time=$r['start_date']." ".$r['start_time'];
+	$end_date_time=$r['end_date']." ".$r['end_time'];
+	$stime=strtotime($start_date_time);
+	$etime=strtotime($end_date_time);
+	if((time()>=$stime) && (time()<=$etime)){
+		return 2;//present
+		}
+	else if((time()>$stime) && (time()>$etime)){
+		return 1;//past
+		}
+	else if((time()<$stime) && (time()<$etime)){
+		if($type==1){
+		return $start_date_time;//future
+		}
+		else{
+			return 3;}
+		}
 	}
 ?>
