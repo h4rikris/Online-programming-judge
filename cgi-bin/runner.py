@@ -16,11 +16,16 @@ import os,subprocess,time,signal,cgi,Cookie
 print "Content-type:text/html\n\n"
 print '<html>'
 print '<head>'
-print '<title>Contest create</title>'
+print '<title>Contest |create</title>'
 print '</head>'
 print '<body>'
-pathtoauth="/opt/lampp/htdocs/compiler/auth/"
+pathtoauth="/home/krishna/online/Online-programming-judge/compiler/auth/"
 contestpath="/home/krishna/Contest/"
+print "asd12"
+session_file=open(pathtoauth+"138892208569a578d78f648eb45cc55R092848","r")
+print "asd"
+sid=session_file.readlines()
+print sid
 form=cgi.FieldStorage()
 got_all_inputs=0
 access_grant=0
