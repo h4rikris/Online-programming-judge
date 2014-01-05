@@ -4,9 +4,9 @@ include("mycrypt.php");
 if (isset($_SESSION['access']) && $_SESSION['access']==0){
 	include("db.php");
 	$q=mysql_query("SELECT * FROM contests");
-	$future="<table><th> Contest</th><th>Start date</th><th>End date</th><th>No of problems</th>";
-	$present="<table><th> Contest</th><th>Start date</th><th>End date</th><th>No of problems</th>";
-	$past="<table><th> Contest</th><th>Start date</th><th>End date</th><th>No of problems</th>";
+	$future="<table border=1><th> Contest</th><th>Start date</th><th>End date</th><th>No of problems</th>";
+	$present="<table border=1><th> Contest</th><th>Start date</th><th>End date</th><th>No of problems</th>";
+	$past="<table border=1><th> Contest</th><th>Start date</th><th>End date</th><th>No of problems</th>";
 	while($r=mysql_fetch_array($q)){
 		$start_date_time=$r['start_date']." ".$r['start_time'];
 		$end_date_time=$r['end_date']." ".$r['end_time'];
