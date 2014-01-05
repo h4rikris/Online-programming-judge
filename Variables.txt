@@ -1,5 +1,7 @@
-Variable name	description	filenames using the variable
-pcode		problem code	admn_problems_up.php,admn_problems.php,scripts.js
-inputs		problem inputs	admn_problems_up.php,admn_problems.php,scripts.js
-outputs		problem outputs admn_problems_up.php,admn_problems.php,scripts.js
+Variable name	description			filenames using the variable
+pcode		problem code			admn_problems_up.php,admn_problems.php,scripts.js
+inputs		problem inputs			admn_problems_up.php,admn_problems.php,scripts.js
+outputs		problem outputs 		admn_problems_up.php,admn_problems.php,scripts.js
+pathtoauth	authorization files		createContest.py,createProblems.py	
+contestpath	Path to contest directory	createContest.py,createProblems.py
 
