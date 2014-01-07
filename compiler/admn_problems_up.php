@@ -21,9 +21,22 @@ if (isset($_SESSION['sec']) && $gotallinputs==1 && $_POST['cry']==$_SESSION['sec
 		$temp=$r['num'];
 		$temp=$temp+1;
 		mysql_query("UPDATE contests SET num=$temp WHERE name='$contest'")or die(mysql_error());
-		$crypt=(string)time().myencrypt(myrand()).$_SESSION['uid'];
-		auth($crypt,$_COOKIE['PHPSESSID']);
-		header("Location:/compile/createProblems.py?contest=$contest&title=$pcode&cry=$crypt&inputs=".urlencode($_POST['inputs'])."&outputs=".urlencode($_POST['outputs']));
+		$fn1=myencrypt(myrand());
+		$f=fopen("/tmp/".$fn1,"w");
+		fwrite($f,$_POST['inputs']);
+		fclose($f);
+		$fn2=myencrypt(myrand());
+		$f=fopen("/tmp/".$fn2,"w");
+		fwrite($f,$_POST['outputs']);
+		fclose($f);
+		$contest=escapeshellarg($contest);
+		$pcode=escapeshellarg($pcode);
+		$pid=popen("python /home/krishna/online/Online-programming-judge/compiler/createProblems.py $contest $pcode $fn1 $fn2","r") or die("error");
+		$ot=fread($pid,256);
+		if ($ot="1"){echo "Successfully inserted problem";}
+		else{echo "miss";}
+		pclose($pid);
+		//header("Location:/compile/createProblems.py?contest=$contest&title=$pcode&cry=$crypt&inputs=".urlencode($_POST['inputs'])."&outputs=".urlencode($_POST['outputs']));
 	}
 else{
 		header("Location:index.php?err=3");
