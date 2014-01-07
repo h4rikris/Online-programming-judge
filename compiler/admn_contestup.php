@@ -26,8 +26,13 @@ if (isset($_SESSION['sec']) && isset($_GET['cry']) && $_GET['cry']==$_SESSION['s
 	$author=$_SESSION['uid'];
 		mysql_query("INSERT INTO contests (name,start_date,start_time,end_date,end_time,author) VALUES ('$c','$sd','$st','$ed','$et','$author')") or die("Something went wrong.!!!! :-(");
 		$crypt=(string)time().myencrypt(myrand()).$_SESSION['uid'];
-		auth($crypt,$_COOKIE['PHPSESSID']);
-		header("Location:/compile/createContest.py?contest=$c&cry=$crypt");}
+		auth_contest($crypt,$_COOKIE['PHPSESSID'],$c);
+		$pid=popen("python /home/krishna/online/Online-programming-judge/compiler/createContest.py $crypt","r") or die("error");
+		echo fread($pid,256);
+		flush();
+		ob_flush();
+		pclose($pid);
+		}
 	else{
 		echo "Invalid date and time. Please check start date and time,end date and time.\nNote:The starting date of the competition must be greater than current time.";
 		}

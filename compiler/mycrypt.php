@@ -24,6 +24,12 @@ function myencrypt($s){
 		$temp=$temp.$s[$i];}
 	return $temp;
 	}
+function auth_contest($cry,$sid,$c){
+	$f=fopen("auth/".$cry,"w");
+	fwrite($f,$sid."\n");
+	fwrite($f,$c."\n");
+	fclose($f);
+	}
 function auth($cry,$sid){
 	$f=fopen("auth/".$cry,"w");
 	fwrite($f,$sid."\n");
