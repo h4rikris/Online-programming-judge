@@ -21,18 +21,23 @@ error=100
 max_execution_time=5 #in Seconds
 contest=sys.argv[1]
 problem=sys.argv[2]
-filename=sys.argv[3]
-language=sys.argv[4]
-time_limit=sys.argv[5]
+user=sys.argv[3]
+filename=sys.argv[4]
+language=sys.argv[5]
+time_limit=sys.argv[6]
 languages=["python","C","Java"]
-os.chdir(contestpath+contest+"/"+problem)
+if language=="python":
+	filename=filename+".py"
+elif language=="C":
+	filename=filname+".c"
+os.chdir(contestpath+contest+"/"+problem+"/"+user)
 signal.signal(signal.SIGALRM,handler)
 command=[]
 if language=="C":
 	command=["cc",filename,"-o",filename[:-2]]
 	out=subprocess.Popen(command,stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE).communicate()
 	if len(out[1])!=0:
-		print "Compile time error"
+		print "Compile time error",out[1]
 	else:
 		f=open("inputs","r")
 		fi=f.read()
@@ -49,6 +54,7 @@ if language=="C":
 		except Exception:
 			print "Your are running out of time...!!!"
 elif language=="Java":
+	subprocess.Popen(["rm","*.class"])
 	command=["javac",filename]
 	out=subprocess.Popen(command,stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE).communicate()
 	if len(out[1])!=0:

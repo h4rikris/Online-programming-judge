@@ -1,4 +1,24 @@
 <?php
+function get_output($cmd) {
+    $descriptorspec = array(0 => array('pipe', 'r'),     // stdin
+                            1 => array('pipe', 'w'),     // stdout
+                            2 => array('pipe', 'w'));    // stderr
+
+    $process = proc_open($cmd, $descriptorspec, $pipes);
+    $output = '';
+    if (is_resource($process)) {
+        fwrite($pipes[0], 'some std input can be here');    // not necessary
+        fclose($pipes[0]);
+
+        $output = stream_get_contents($pipes[1]);
+        $err = stream_get_contents($pipes[2]);
+        fclose($pipes[1]);
+        fclose($pipes[2]);
+
+        proc_close($process);
+    }
+    return $output;
+}
 session_start();
 include("mycrypt.php");
 $gotallinputs=0;
@@ -31,11 +51,13 @@ if (isset($_SESSION['sec']) && $gotallinputs==1 && $_POST['cry']==$_SESSION['sec
 		fclose($f);
 		$contest=escapeshellarg($contest);
 		$pcode=escapeshellarg($pcode);
-		$pid=popen("python /home/krishna/online/Online-programming-judge/compiler/createProblems.py $contest $pcode $fn1 $fn2","r") or die("error");
-		$ot=fread($pid,256);
-		if ($ot="1"){echo "Successfully inserted problem";}
+		$ot=get_output("python /home/krishna/online/Online-programming-judge/compiler/createProblems.py $contest $pcode $fn1 $fn2");
+		//$pid=popen("python /home/krishna/online/Online-programming-judge/compiler/createProblems.py $contest $pcode $fn1 $fn2","r") or die("error");
+		//$ot=fread($pid,256);
+		echo gettype($ot);
+		if ($ot=="one"){echo "Successfully inserted problem";}
 		else{echo "miss";}
-		pclose($pid);
+		//pclose($pid);
 		//header("Location:/compile/createProblems.py?contest=$contest&title=$pcode&cry=$crypt&inputs=".urlencode($_POST['inputs'])."&outputs=".urlencode($_POST['outputs']));
 	}
 else{

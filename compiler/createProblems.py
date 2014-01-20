@@ -26,7 +26,7 @@ except OSError:
 if stat==1:
 	print "Something went wrong.make sure that you have entered unique contest name and problem name"
 elif stat==2:
-	print "1"
+	print "one"
 elif stat==5:
 	print "no values parsed"
 else:

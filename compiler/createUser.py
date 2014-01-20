@@ -9,7 +9,7 @@ l=os.listdir(contestpath)
 l1=os.listdir(contestpath+contest)
 l2=os.listdir(contestpath+contest+"/"+pcode)
 if (contest in l) and (pcode in l1):
-	if user in l2:
+	if user not in l2:
 		os.mkdir(contestpath+contest+"/"+pcode+"/"+user)
 	print "1"
 else:
