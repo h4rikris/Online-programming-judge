@@ -6,6 +6,7 @@ if( $_FILES['file']['name'] != "" && isset($_POST['cry']) && $_POST['cry']==$_SE
 	include("envVar.php");
 	$_SESSION['sec']=myencrypt(myrand());
 	include("db.php");
+	$user=$_SESSION['uid'];
 	$contest=$_SESSION['contest'];
 	$problem=$_SESSION['problem'];
 	$filename=$_SESSION['uid'].myrand();
@@ -20,7 +21,7 @@ if( $_FILES['file']['name'] != "" && isset($_POST['cry']) && $_POST['cry']==$_SE
     move_uploaded_file($_FILES['file']["tmp_name"],pathtocontest.$contest."/".$problem."/".$user."/".$filename) or die("sry something went wrong!!!");
     $crypt=(string)time().myencrypt(myrand()).$_SESSION['uid'];
 	auth_submit($crypt,$_COOKIE['PHPSESSID'],$contest,$problem,$filename);
-	header("Location:/compile/runner.py?contest=$contest&problem=$problem&cry=$crypt&language=$language&filename=$filename&time_limit=$time_limit");
+	header("Location:/compile/runner.py?contest=$contest&problem=$problem&cry=$crypt&user=$user&language=$language&filename=$filename&time_limit=$time_limit");
 }
 else
 {
