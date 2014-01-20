@@ -10,7 +10,6 @@ function createContest(divID) {
 	var eap=document.forms["contestf"]["eap"].value;
 	st=st+" "+sap;
 	et=et+" "+eap;
-	alert(st);
 	if (window.XMLHttpRequest) 
 		{ xmlhttp = new XMLHttpRequest(); 
 		} 
