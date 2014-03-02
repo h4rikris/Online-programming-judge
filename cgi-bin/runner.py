@@ -27,23 +27,13 @@ got_all_inputs=0
 access_grant=0
 error=100
 max_execution_time=5 #in Seconds
-if form.getvalue('cry') and form.getvalue('contest') and form.getvalue('problem') and form.getvalue('language') and form.getvalue('time_limit') and form.getvalue('filename'):
-	user=form.getvalue('user')
+if form.getvalue('cry'):
 	cry=form.getvalue('cry')
-	contest=form.getvalue('contest')
-	problem=form.getvalue('problem')
-	language=form.getvalue('language')
-	filename=form.getvalue('filename')
-	time_limit=form.getvalue('time_limit')
-	l=os.listdir(pathtoauth)
-	l1=os.listdir(contestpath)
-	l2=os.listdir(contestpath+contest)
-	languages=["python","C","Java"]
 	got_all_inputs=1
 	
 else:
 	error=1
-if (got_all_inputs==1) and (cry in l) and (contest in l1) and (problem in l2) and (language in languages):
+if (got_all_inputs==1):
 	#retriving cookie
 	cookie=Cookie.SimpleCookie()
 	cookie_string = os.environ.get('HTTP_COOKIE')
@@ -51,8 +41,18 @@ if (got_all_inputs==1) and (cry in l) and (contest in l1) and (problem in l2) an
 	#End of code for retriving cookie
 	session_file=open(pathtoauth+cry,"r")
 	sid=session_file.readlines()
-	if (sid[0][0:26]==cookie["PHPSESSID"].value[0:26]) and (sid[1][:-1]==contest) and (sid[2][:-1]==problem) and (sid[3][:-1]==filename):
+	contest=sid[1][:-1]
+	problem=sid[2][:-1]
+	filename=sid[3][:-1]
+	user=sid[4][:-1]
+	language=sid[5][:-1]
+	time_limit=sid[6][-1]
+	if (sid[0][0:26]==cookie["PHPSESSID"].value[0:26]):
 		access_grant=1
+		l=os.listdir(pathtoauth)
+		l1=os.listdir(contestpath)
+		l2=os.listdir(contestpath+contest)
+		languages=["python","C","Java"]
 		os.remove(pathtoauth+cry)
 	else:
 		if error>3:
@@ -60,7 +60,7 @@ if (got_all_inputs==1) and (cry in l) and (contest in l1) and (problem in l2) an
 else:
 	if error>2:	
 		error=2
-if access_grant==1:
+if (access_grant==1) and (cry in l) and (contest in l1) and (problem in l2) and (language in languages):
 	os.chdir(contestpath+contest+"/"+problem+"/"+user)
 	signal.signal(signal.SIGALRM,handler)
 	command=[]	

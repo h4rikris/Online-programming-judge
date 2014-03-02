@@ -16,7 +16,7 @@ if (isset($_SESSION['access']) && $_SESSION['access']==0){
 			$future=$future."<tr><td><a href=contest.php?contest=".$r[0].">".$r[0]."</a></td><td>".$start_date_time."</td><td>".$end_date_time."</td><td>".$r[6]."</td></tr>";
 			}
 		else if((time()>=$stime) && (time()<=$etime)){
-			$present=$present."<tr><td><a href=contest.php?contest=".$r[0].">".$r[0]."</a></td><td>".$start_date_time."</td><td>".$end_date_time."</td><td>".$r[6]."</td></tr>";
+			$present=$present."<tr><td><a href=contest.php?contest=".urlencode($r[0]).">".$r[0]."</a></td><td>".$start_date_time."</td><td>".$end_date_time."</td><td>".$r[6]."</td></tr>";
 			}
 		else{
 			$past=$past."<tr><td><a href=contest.php?contest=".$r[0].">".$r[0]."</a></td><td>".$start_date_time."</td><td>".$end_date_time."</td><td>".$r[6]."</td></tr>";

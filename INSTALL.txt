@@ -1,6 +1,6 @@
 
 INSTALLATION:
-To install Online programming judge you just need xampp server and python 2.7 . By default python 2.7 comes with ubuntu distro.
+To install Online programming judge you just need xampp server and python 2.7 . By default python 2.7 comes with all ubuntu distro.
 If you dont have these softwares install it first.
 
 After Installing xampp and python (version 2.7) You need to configure it. 

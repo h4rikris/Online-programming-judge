@@ -29,12 +29,15 @@ function auth($cry,$sid){
 	fwrite($f,$sid."\n");
 	fclose($f);
 	}
-function auth_submit($cry,$sid,$c,$p,$fn){
+function auth_submit($cry,$sid,$contest,$problem,$filename,$user,$language,$time_limit){
 	$f=fopen("auth/".$cry,"w");
 	fwrite($f,$sid."\n");
-	fwrite($f,$c."\n");
-	fwrite($f,$p."\n");
-	fwrite($f,$fn."\n");
+	fwrite($f,$contest."\n");
+	fwrite($f,$problem."\n");
+	fwrite($f,$filename."\n");
+	fwrite($f,$user."\n");
+	fwrite($f,$language."\n");
+	fwrite($f,$time_limit."\n");
 	fclose($f);
 	}
 function check_input($r){

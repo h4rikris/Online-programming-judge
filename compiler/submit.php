@@ -18,10 +18,11 @@ if( $_FILES['file']['name'] != "" && isset($_POST['cry']) && $_POST['cry']==$_SE
 	else if ($language=="C"){$filename=$filename.".c";}
 	else if ($language=="Java"){$filename=$_FILES['file']['name'];}
 	$pid=popen("python /home/krishna/online/Online-programming-judge/compiler/createUser.py $contest $problem $user","r") or die("error");
+	sleep(2);
     move_uploaded_file($_FILES['file']["tmp_name"],pathtocontest.$contest."/".$problem."/".$user."/".$filename) or die("sry something went wrong!!!");
     $crypt=(string)time().myencrypt(myrand()).$_SESSION['uid'];
-	auth_submit($crypt,$_COOKIE['PHPSESSID'],$contest,$problem,$filename);
-	header("Location:/compile/runner.py?contest=$contest&problem=$problem&cry=$crypt&user=$user&language=$language&filename=$filename&time_limit=$time_limit");
+	auth_submit($crypt,$_COOKIE['PHPSESSID'],$contest,$problem,$filename,$user,$language,$time_limit);
+	header("Location:/compile/runner.py?cry=$crypt");
 }
 else
 {
