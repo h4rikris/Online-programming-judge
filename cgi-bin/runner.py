@@ -27,7 +27,6 @@ access_grant=0
 error=100
 max_execution_time=5 #in Seconds
 if form.getvalue('cry') and form.getvalue('contest') and form.getvalue('problem') and form.getvalue('language') and form.getvalue('time_limit') and form.getvalue('filename'):
-	
 	cry=form.getvalue('cry')
 	contest=form.getvalue('contest')
 	problem=form.getvalue('problem')
@@ -39,7 +38,6 @@ if form.getvalue('cry') and form.getvalue('contest') and form.getvalue('problem'
 	l2=os.listdir(contestpath+contest)
 	languages=["python","C","Java"]
 	got_all_inputs=1
-	
 else:
 	error=1
 if (got_all_inputs==1) and (cry in l) and (contest in l1) and (problem in l2) and (language in languages):
