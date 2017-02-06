@@ -1,3 +1,5 @@
+Warning: This project is my pet project during schooling. Don't use THIS repo.
+
 Online-programming-judge
 ========================
 
